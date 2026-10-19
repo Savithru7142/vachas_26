@@ -1,5 +1,7 @@
 import type { SiteContent } from './types'
 
+export const vangmayaUrl = 'https://vangmaya-vachas-kl.vercel.app/'
+
 export const site: SiteContent = {
   name: 'THE VACHAS',
   tagline: 'WORDS. VOICES. STORIES.',

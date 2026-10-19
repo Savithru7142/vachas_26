@@ -1,12 +1,12 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import {
   ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, BookOpen,
-  CalendarDays, Menu, Pause, Play, Search, X,
+  CalendarDays, Menu, Pause, Play, Search, Sparkles, X,
 } from 'lucide-react'
 import {
   Link, NavLink, Route, Routes, useLocation, useParams,
 } from 'react-router-dom'
-import { site } from './data/site'
+import { site, vangmayaUrl } from './data/site'
 import { wings } from './data/wings'
 import { team } from './data/team'
 import { events } from './data/events'
@@ -54,6 +54,9 @@ function App() {
           {navigation.map(([label, to]) => (
             <NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>{label}</NavLink>
           ))}
+          <a className="nav-vangmaya" href={vangmayaUrl} target="_blank" rel="noreferrer">
+            Vāṅmaya AI <Sparkles size={14} aria-hidden="true" />
+          </a>
           <NavLink to="/join" className="nav-join">Join us <ArrowUpRight size={15} /></NavLink>
         </nav>
       </header>
@@ -176,6 +179,19 @@ function Home() {
           <Eyebrow>THE CLUB</Eyebrow>
           <p>A poem gives a feeling its first words.<br /><em>A story makes room for every voice.</em></p>
           <Link className="text-link" to="/about">Discover VACHAS <ArrowUpRight size={16} /></Link>
+        </div>
+      </section>
+
+      <section className="vangmaya-feature" aria-labelledby="vangmaya-title">
+        <div className="wrap vangmaya-feature-inner">
+          <div className="vangmaya-copy">
+            <span className="vangmaya-label"><Sparkles size={14} aria-hidden="true" /> VACHAS AI WORKSPACE</span>
+            <h2 id="vangmaya-title">Meet <em>Vāṅmaya.</em></h2>
+            <p>Shape your writing with Vyāsa. Put your ideas to the test with Gautama. A thoughtful AI workspace built for the way VACHAS creates and thinks.</p>
+          </div>
+          <a className="button vangmaya-button" href={vangmayaUrl} target="_blank" rel="noreferrer">
+            Explore Vāṅmaya <ArrowUpRight size={16} />
+          </a>
         </div>
       </section>
 
@@ -529,7 +545,7 @@ function Footer() {
       <div className="footer-about"><Link className="footer-wordmark" to="/"><img src="/vachas-logo.png" alt="" /><span><strong>Vachas</strong><small>THE LITERATURE CLUB</small></span></Link><p>A university literature club where words find voice across Telugu, Hindi, English, and creative expression.</p></div>
       <div className="footer-group"><h2>Our wings</h2>{wings.map((wing) => <Link to={`/wings/${wing.slug}`} key={wing.slug}>{wing.name}</Link>)}</div>
       <div className="footer-group"><h2>Explore</h2>{[['Publications', '/publications'], ['Blogs', '/blogs'], ['Gallery', '/gallery'], ['About the club', '/about'], ['Executive team', '/team'], ['Achievements', '/achievements']].map(([label, to]) => <Link to={to} key={to}>{label}</Link>)}</div>
-      <div className="footer-group"><h2>Connect</h2><Link to="/contact">Contact us</Link><Link to="/join">Join THE VACHAS</Link>{socialLinks.filter((social) => getSafeContentUrl(social.url)).map((social) => <a href={getSafeContentUrl(social.url)} key={social.label} target="_blank" rel="noreferrer">{social.label}</a>)}</div>
+      <div className="footer-group"><h2>Connect</h2><a href={vangmayaUrl} target="_blank" rel="noreferrer">Vāṅmaya AI workspace</a><Link to="/contact">Contact us</Link><Link to="/join">Join THE VACHAS</Link>{socialLinks.filter((social) => getSafeContentUrl(social.url)).map((social) => <a href={getSafeContentUrl(social.url)} key={social.label} target="_blank" rel="noreferrer">{social.label}</a>)}</div>
     </div>
     <div className="footer-bottom"><span>© {new Date().getFullYear()} Vachas — The Literature Club. All rights reserved.</span><span>WHERE WORDS FIND VOICE.</span><a href="#top" onClick={(event) => { event.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>Back to top ↑</a></div>
   </div></footer>
