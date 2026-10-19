@@ -21,6 +21,7 @@ import type { Achievement, BlogPost, ClubEvent, GalleryImage, Publication, Recru
 const navigation = [
   ['Home', '/'],
   ['Wings', '/wings'],
+  ['Teams', '/team'],
   ['Publications', '/publications'],
   ['Blogs', '/blogs'],
   ['Gallery', '/gallery'],
